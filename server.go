@@ -1686,6 +1686,10 @@ func (s *server) establishPersistentConnections() error {
 		_ *bbolt.Tx,
 		_ *channeldb.ChannelEdgeInfo,
 		policy, _ *channeldb.ChannelEdgePolicy) error {
+		
+		if policy == nil {
+			return nil
+		}
 
 		pubStr := string(policy.Node.PubKeyBytes[:])
 
